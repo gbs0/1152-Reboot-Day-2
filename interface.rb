@@ -7,6 +7,7 @@
 require_relative "app"
 
 puts "🎅🏼 Welcome to your Christmas List!"
+load_csv # Popula a lista de presentes com os itens do CSV
 
 def print_actions
   puts "Please select an action to start:"
@@ -14,7 +15,8 @@ def print_actions
   puts "2 - Mark Gift As Bought"
   puts "3 - List all Gifts"
   puts "4 - Delete a Gift"
-  puts "5 - Exit"
+  puts "5 - Find an Idea on Etsy.com"
+  puts "0 - Exit"
   print "> "
 end
 
@@ -44,6 +46,16 @@ def dispatch_action(user_choice)
       delete(user_choice)
       list
     when "5"
+      puts "What you wanna search on Etsy?"
+      user_choice = gets.chomp
+      etsy_list = ideia(user_choice)
+      display(etsy_list)
+      puts "What is the index of the item you want to add on the list?"
+      user_index = gets.chomp.to_i
+      etsy_gift = etsy_list[user_index - 1]
+      etsy_gift[:bought] = false
+      add(etsy_gift)
+    when "0"
       puts "Bye bye!"
       exit
     else
