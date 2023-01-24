@@ -35,3 +35,13 @@ def list
     puts "#{index + 1} - #{bought} #{gift[:name].capitalize}"
   end
 end
+
+# Construir a ação de deletar um item da lista
+# 1. Listamos p/ o user, os prensentes disponiveis
+# 2. Perguntar qual o item ele quer deletar
+# 3. Deletemos o item da lista
+# 4. Listamos novamente a lista com os itens restantes
+def delete(index)
+  @christmas_list.delete_at(index - 1)
+  puts "Item was deleted!"
+end

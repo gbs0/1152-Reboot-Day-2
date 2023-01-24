@@ -13,7 +13,8 @@ def print_actions
   puts "1 - Add a Gift"
   puts "2 - Mark Gift As Bought"
   puts "3 - List all Gifts"
-  puts "4 - Exit"
+  puts "4 - Delete a Gift"
+  puts "5 - Exit"
   print "> "
 end
 
@@ -37,6 +38,12 @@ def dispatch_action(user_choice)
       puts "Here are your gifts:"
       list
     when "4"
+      list
+      puts "What number you want to delete?"
+      user_choice = gets.chomp.to_i
+      delete(user_choice)
+      list
+    when "5"
       puts "Bye bye!"
       exit
     else
